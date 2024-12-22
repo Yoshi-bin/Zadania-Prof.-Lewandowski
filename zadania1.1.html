@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculate Rectangle Area</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Calculate Rectangle Area</h1>
+    <label for="width">Width:</label>
+    <input type="number" id="width" />
+    <br />
+    <label for="height">Height:</label>
+    <input type="number" id="height" />
+    <br />
+    <button id="calculateButton">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+      $(document).ready(() => {
+        $("#calculateButton").click(() => {
+          const width = parseFloat($("#width").val());
+          const height = parseFloat($("#height").val());
+
+          if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+            $("#result").text(
+              "Please enter valid values for width and height."
+            );
+          } else {
+            const area = width * height;
+            $("#result").text(`The area of the rectangle is: ${area}`);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamiczne Ładowanie Zadań</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Dynamiczne Ładowanie Zadań</h1>
+      <nav>
+        <ul>
+          <li>
+            <button data-file="zadania1.1.html">Zadanie 1.1</button>
+          </li>
+          <li>
+            <button data-file="zadanie1.2.html">Zadanie 1.2</button>
+          </li>
+          <li>
+            <button data-file="zadanie1.3.html">Zadanie 1.3</button>
+          </li>
+          <li>
+            <button data-file="zadanie1.4.html">Zadanie 1.4</button>
+          </li>
+          <li>
+            <button data-file="zadanie1.5.html">Zadanie 1.5</button>
+          </li>
+          <li>
+            <button data-file="zadanie1.6.html">Zadanie 1.6</button>
+          </li>
+          <li>
+            <button data-file="zadanie2.html">Zadanie 2</button>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <button data-file="zadanie3.1.html">Zadanie 3.1</button>
+          </li>
+          <li>
+            <button data-file="zadanie3.2.html">Zadanie 3.2</button>
+          </li>
+          <li>
+            <button data-file="zadanie4.1.html">Zadanie 4.1</button>
+          </li>
+          <li>
+            <button data-file="zadanie4.2.html">Zadanie 4.2</button>
+          </li>
+          <li>
+            <button data-file="zadanie4.3.html">Zadanie 4.3</button>
+          </li>
+          <li>
+            <button data-file="zadanie4.4.html">Zadanie 4.4</button>
+          </li>
+          <li>
+            <button data-file="zadanie4.5.html">Zadanie 4.5</button>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <button data-file="zadanie4.6.html">Zadanie 4.6</button>
+          </li>
+          <li>
+            <button data-file="zadanie4.7.html">Zadanie 4.7</button>
+          </li>
+          <li>
+            <button data-file="zadanie4.8.html">Zadanie 4.8</button>
+          </li>
+          <li>
+            <button id="zadanie5-button">Zadanie 5</button>
+          </li>
+          <li>
+            <button data-file="zadanie6.html">Zadanie 6</button>
+          </li>
+          <li>
+            <button data-file="zadanie7.html">Francesinha</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main-content">
+      <p>Wybierz zadanie z menu, aby je załadować.</p>
+    </main>
+    <button id="show-code-button" style="display: none">Pokaż kod</button>
+    <pre id="code-content" class="language-html" style="display: none"></pre>
+    <script src="script.js"></script>
+    <script>
+      document
+        .getElementById("zadanie5-button")
+        .addEventListener("click", function () {
+          window.open("zadanie5/zadanie5.html", "_blank");
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Functions</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <label for="numbersInput">Enter numbers separated by commas:</label>
+      <input type="text" id="numbersInput" placeholder="e.g. 1,2,3,4" />
+    </div>
+    <div>
+      <label for="stringInput">Enter a string to convert to uppercase:</label>
+      <input type="text" id="stringInput" placeholder="e.g. hello" />
+    </div>
+    <div>
+      <button id="calculateSum">Calculate Average</button>
+      <button id="calculateProduct">Calculate Product</button>
+      <button id="findMax">Find Max</button>
+      <button id="findMin">Find Min</button>
+      <button id="reverseString">Convert to Uppercase</button>
+    </div>
+    <div id="result"></div>
+    <script>
+      const calculateAverage = (...numbers) => {
+        if (numbers.length === 0) return 0;
+        const sum = numbers.reduce((total, num) => total + num, 0);
+        return sum / numbers.length;
+      };
+
+      const multiplyNumbers = (...numbers) => {
+        return numbers.reduce((total, num) => total * num, 1);
+      };
+
+      const findMax = (...numbers) => {
+        return Math.max(...numbers);
+      };
+
+      const findMin = (...numbers) => {
+        return Math.min(...numbers);
+      };
+
+      const toUpperCase = (str) => {
+        return str.toUpperCase();
+      };
+
+      $(document).ready(() => {
+        $("#calculateSum").click(() => {
+          const inputValues = $("#numbersInput").val();
+          const numbers = inputValues.split(",").map(Number);
+          const result = calculateAverage(...numbers);
+          $("#result").text(`Average: ${result}`);
+        });
+
+        $("#calculateProduct").click(() => {
+          const inputValues = $("#numbersInput").val();
+          const numbers = inputValues.split(",").map(Number);
+          const result = multiplyNumbers(...numbers);
+          $("#result").text(`Product: ${result}`);
+        });
+
+        $("#findMax").click(() => {
+          const inputValues = $("#numbersInput").val();
+          const numbers = inputValues.split(",").map(Number);
+          const result = findMax(...numbers);
+          $("#result").text(`Max: ${result}`);
+        });
+
+        $("#findMin").click(() => {
+          const inputValues = $("#numbersInput").val();
+          const numbers = inputValues.split(",").map(Number);
+          const result = findMin(...numbers);
+          $("#result").text(`Min: ${result}`);
+        });
+
+        $("#reverseString").click(() => {
+          const inputString = $("#stringInput").val();
+          const result = toUpperCase(inputString);
+          $("#result").text(`Uppercase: ${result}`);
+        });
+      });
+    </script>
+  </body>
+</html>

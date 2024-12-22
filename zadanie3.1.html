@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal Interactions</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      button {
+        margin: 10px 0;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid gray;
+        min-height: 50px;
+        background-color: white;
+      }
+      img {
+        display: block;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Animal Interactions</h1>
+    <button id="fishActions">Interact with Fish</button>
+    <button id="dogActions">Interact with Dog</button>
+    <button id="birdActions">Interact with Bird</button>
+
+    <div id="output"><strong>Messages:</strong></div>
+
+    <script>
+      // Base class
+      class Animal {
+        constructor(mass, age) {
+          this.mass = mass;
+          this.age = age;
+        }
+
+        look() {
+          Animal.showMessage("The animal is looking around.");
+        }
+
+        breathe() {
+          Animal.showMessage("The animal is breathing.");
+        }
+
+        static showMessage(message) {
+          $("#output").append(`<p>${message}</p>`);
+        }
+      }
+
+      // Subclass: Fish
+      class Fish extends Animal {
+        constructor(mass, age, fins) {
+          super(mass, age);
+          this.fins = fins;
+        }
+
+        swim() {
+          Animal.showMessage("The fish is swimming.");
+          $("#output").append(
+            '<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHptODZ5YjhwcnBhdHpqN2JlamV0bnkzZDlqbWI5eXZsMXNzbzhycyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lPuW5AlR9AeWzSsIqi/giphy.gif" alt="Spinning Fish">'
+          );
+        }
+      }
+
+      // Subclass: Mammal
+      class Mammal extends Animal {
+        run() {
+          Animal.showMessage("The mammal is running.");
+        }
+      }
+
+      // Subclass: Bird
+      class Bird extends Animal {
+        fly() {
+          Animal.showMessage("I’m a bird, motherf***er!");
+        }
+      }
+
+      // Extends Subclass: Dog (For What????)
+      class Dog extends Mammal {
+        constructor(mass, age, breed, furColor) {
+          super(mass, age);
+          this.breed = breed;
+          this.furColor = furColor;
+        }
+
+        bark() {
+          Animal.showMessage("What the dog doin'?");
+        }
+
+        givePaw() {
+          Animal.showMessage("The dog is giving its paw.");
+        }
+
+        fetch() {
+          Animal.showMessage("The dog is fetching the item.");
+        }
+      }
+
+      $(document).ready(() => {
+        const myFish = new Fish(2, 1, 4);
+        const myDog = new Dog(20, 3, "Labrador", "Yellow");
+        const myBird = new Bird(1, 2);
+
+        $("#fishActions").click(() => {
+          Animal.showMessage("<strong>Interacting with Fish:</strong>");
+          myFish.breathe();
+          myFish.swim();
+        });
+
+        $("#dogActions").click(() => {
+          Animal.showMessage("<strong>Interacting with Dog:</strong>");
+          myDog.look();
+          myDog.bark();
+          myDog.fetch();
+        });
+
+        $("#birdActions").click(() => {
+          Animal.showMessage("<strong>Interacting with Bird:</strong>");
+          myBird.look();
+          myBird.fly();
+        });
+      });
+    </script>
+  </body>
+</html>

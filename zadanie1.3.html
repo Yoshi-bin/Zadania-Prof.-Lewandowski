@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personalized Greeting</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Personalized Greeting</h1>
+    <label for="name">Name:</label>
+    <input type="text" id="name" />
+    <br />
+    <label for="greeting">Greeting:</label>
+    <input type="text" id="greeting" placeholder="e.g. hello" />
+    <br />
+    <button id="greetButton">Greet</button>
+    <p id="result"></p>
+
+    <script>
+      const greet = (name, greeting) => `${greeting}, ${name}`;
+
+      $(document).ready(() => {
+        $("#greetButton").click(() => {
+          const name = $("#name").val();
+          const greeting = $("#greeting").val();
+
+          if (!name || !greeting) {
+            $("#result").text("Please provide both your name and a greeting.");
+          } else {
+            const personalizedGreeting = greet(name, greeting);
+            $("#result").text(personalizedGreeting);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

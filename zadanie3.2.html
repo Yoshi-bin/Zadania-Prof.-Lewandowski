@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Hierarchy</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      button {
+        margin: 10px 0;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid gray;
+        min-height: 50px;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Vehicle Interactions</h1>
+    <button id="carActions">Interact with Car</button>
+    <button id="truckActions">Interact with Truck</button>
+    <button id="motorcycleActions">Interact with Motorcycle</button>
+    <button id="electricCarActions">Interact with Electric Car</button>
+
+    <div id="output"><strong>Messages:</strong></div>
+
+    <script>
+      // Base class
+      class Vehicle {
+        constructor(speed, fuelType) {
+          this.speed = speed;
+          this.fuelType = fuelType;
+        }
+
+        start() {
+          Vehicle.showMessage("The vehicle has started.");
+        }
+
+        stop() {
+          Vehicle.showMessage("The vehicle has stopped.");
+        }
+
+        static showMessage(message) {
+          $("#output").append(`<p>${message}</p>`);
+        }
+      }
+
+      // Subclass: Car
+      class Car extends Vehicle {
+        constructor(speed, fuelType, brand, doors) {
+          super(speed, fuelType);
+          this.brand = brand;
+          this.doors = doors;
+        }
+
+        openDoors() {
+          Vehicle.showMessage(`The doors of the ${this.brand} car are open.`);
+        }
+      }
+
+      // Subclass: Truck
+      class Truck extends Vehicle {
+        constructor(speed, fuelType, capacity) {
+          super(speed, fuelType);
+          this.capacity = capacity;
+        }
+
+        loadCargo() {
+          Vehicle.showMessage(
+            `The truck is being loaded with ${this.capacity} tons of cargo.`
+          );
+        }
+      }
+
+      // Subclass: Motorcycle
+      class Motorcycle extends Vehicle {
+        constructor(speed, fuelType, type) {
+          super(speed, fuelType);
+          this.type = type;
+        }
+
+        performWheelie() {
+          Vehicle.showMessage(
+            `The ${this.type} motorcycle is performing a wheelie!`
+          );
+        }
+      }
+
+      // Subclass: ElectricCar
+      class ElectricCar extends Car {
+        constructor(speed, brand, doors, batteryRange) {
+          super(speed, "electric", brand, doors);
+          this.batteryRange = batteryRange;
+        }
+
+        chargeBattery() {
+          Vehicle.showMessage(
+            `The electric car is charging. Range: ${this.batteryRange} km.`
+          );
+        }
+      }
+
+      $(document).ready(() => {
+        const myCar = new Car(180, "petrol", "Toyota", 4);
+        const myTruck = new Truck(120, "diesel", 10);
+        const myMotorcycle = new Motorcycle(220, "petrol", "sport");
+        const myElectricCar = new ElectricCar(150, "Tesla", 4, 450);
+
+        $("#carActions").click(() => {
+          Vehicle.showMessage("<strong>Interacting with Car:</strong>");
+          myCar.start();
+          myCar.openDoors();
+          myCar.stop();
+        });
+
+        $("#truckActions").click(() => {
+          Vehicle.showMessage("<strong>Interacting with Truck:</strong>");
+          myTruck.start();
+          myTruck.loadCargo();
+          myTruck.stop();
+        });
+
+        $("#motorcycleActions").click(() => {
+          Vehicle.showMessage("<strong>Interacting with Motorcycle:</strong>");
+          myMotorcycle.start();
+          myMotorcycle.performWheelie();
+          myMotorcycle.stop();
+        });
+
+        $("#electricCarActions").click(() => {
+          Vehicle.showMessage(
+            "<strong>Interacting with Electric Car:</strong>"
+          );
+          myElectricCar.start();
+          myElectricCar.chargeBattery();
+          myElectricCar.stop();
+        });
+      });
+    </script>
+  </body>
+</html>

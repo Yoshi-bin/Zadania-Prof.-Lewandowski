@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select a Month</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .form-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.493);
+        border-radius: 4px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(50, 149, 255);
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgb(0, 105, 218);
+      }
+
+      .result {
+        margin-top: 20px;
+        font-size: 18px;
+        color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <label for="month">Enter the month number (1-12):</label>
+      <input type="number" id="month" min="1" max="12" placeholder="E.g., 7" />
+      <button id="submit">Show Month Name</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <script>
+      $(document).ready(() => {
+        const monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+
+        $("#submit").on("click", () => {
+          const monthNumber = parseInt($("#month").val());
+
+          if (monthNumber >= 1 && monthNumber <= 12) {
+            const monthName = monthNames[monthNumber - 1];
+            $("#result").text(`Selected month is: ${monthName}`);
+          } else {
+            $("#result").text("Please enter a valid month number (1-12).");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculating Circle Areas</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Calculating Circle Areas</h1>
+
+    <div>
+      <h3>Circle 1</h3>
+      <label for="radius1">Radius:</label>
+      <input type="number" id="radius1" placeholder="Enter radius" />
+      <button id="calculateButton1">Calculate</button>
+      <p id="result1"></p>
+    </div>
+
+    <div>
+      <h3>Circle 2</h3>
+      <label for="radius2">Radius:</label>
+      <input type="number" id="radius2" placeholder="Enter radius" />
+      <button id="calculateButton2">Calculate</button>
+      <p id="result2"></p>
+    </div>
+
+    <div>
+      <h3>Circle 3</h3>
+      <label for="radius3">Radius:</label>
+      <input type="number" id="radius3" placeholder="Enter radius" />
+      <button id="calculateButton3">Calculate</button>
+      <p id="result3"></p>
+    </div>
+
+    <script>
+      const calculateCircleArea = (radius = 1) => Math.PI * radius ** 2;
+
+      $(document).ready(() => {
+        $("#calculateButton1").click(() => {
+          const radius = parseFloat($("#radius1").val());
+          if (isNaN(radius) || radius <= 0) {
+            $("#result1").text("Please enter a valid radius value.");
+          } else {
+            const area = calculateCircleArea(radius);
+            $("#result1").text(`Circle area: ${area.toFixed(2)}`);
+          }
+        });
+
+        $("#calculateButton2").click(() => {
+          const radius = parseFloat($("#radius2").val());
+          if (isNaN(radius) || radius <= 0) {
+            $("#result2").text("Please enter a valid radius value.");
+          } else {
+            const area = calculateCircleArea(radius);
+            $("#result2").text(`Circle area: ${area.toFixed(2)}`);
+          }
+        });
+
+        $("#calculateButton3").click(() => {
+          const radius = parseFloat($("#radius3").val());
+          if (isNaN(radius) || radius <= 0) {
+            $("#result3").text("Please enter a valid radius value.");
+          } else {
+            const area = calculateCircleArea(radius);
+            $("#result3").text(`Circle area: ${area.toFixed(2)}`);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

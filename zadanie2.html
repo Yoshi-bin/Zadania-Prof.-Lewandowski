@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destructuring ES6 and jQuery</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Car Information</h1>
+    <div>Brand: <span id="brand"></span></div>
+    <div>Model: <span id="model"></span></div>
+    <div>Year: <span id="year"></span></div>
+    <div>Engine Type: <span id="engine-type"></span></div>
+    <div>Engine Displacement: <span id="engine-displacement"></span></div>
+    <div>Airbags: <span id="airbags"></span></div>
+    <div>ABS: <span id="abs"></span></div>
+    <div>Radio: <span id="radio"></span></div>
+    <div>Touchscreen: <span id="touchscreen"></span></div>
+
+    <script>
+      let car = {
+        brand: "Toyota",
+        model: "Camry",
+        year: 2022,
+        engine: {
+          type: "V6",
+          displacement: "3.5L",
+        },
+        features: {
+          safety: {
+            airbags: true,
+            abs: true,
+          },
+          entertainment: {
+            radio: "Bluetooth",
+            touchscreen: true,
+          },
+        },
+      };
+
+      const {
+        brand,
+        model,
+        year,
+        engine: { type, displacement },
+        features: {
+          safety: { airbags, abs },
+          entertainment: { radio, touchscreen },
+        },
+      } = car;
+
+      $(document).ready(function () {
+        $("#brand").text(brand);
+        $("#model").text(model);
+        $("#year").text(year);
+        $("#engine-type").text(type);
+        $("#engine-displacement").text(displacement);
+        $("#airbags").text(airbags);
+        $("#abs").text(abs);
+        $("#radio").text(radio);
+        $("#touchscreen").text(touchscreen);
+      });
+    </script>
+  </body>
+</html>
